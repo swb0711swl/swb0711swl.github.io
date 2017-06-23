@@ -1,22 +1,2 @@
-doctype html
-html
-	include partial/head.jade
-	body
-
-		#postContainer
-			#postTop
-				h4#logo #{theme.logo}
-				br
-				br
-				h2#postTitle #{page.title}
-				br
-				span.postTime(class='fa fa-calendar' aria-hidden='true') #{date(page.date['_i'],'YYYY-M-D')}
-				each tag in page.tags.data
-					span.postTags(class='fa fa-tags'  aria-hidden='true') &nbsp;#{tag.name}
-				br
-				br
-			-str = markdown(page.content)
-			section#articleDiv!= str
-		script(src='/js/jquery.min.js')
-		script(src='/js/highlight.min.js')
-		script(src='/js/start.js')
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="yes" name="apple-touch-fullscreen"><meta content="telephone=no,email=no" name="format-detection"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"><link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"><link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet"><script src="https://use.fontawesome.com/adaf0e149c.js"></script><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/monokai_sublime.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/post.css"><link rel="stylesheet" href="/css/markdown-github.css"><title>wildPointer</title><script src="/js/googleAnalytics.js"></script></head><body><div id="postContainer"><div id="postTop"><h4 id="logo">Life Is Short</h4><br><br><h2 id="postTitle">初来乍到</h2><br><span aria-hidden="true" class="postTime fa fa-calendar">2017-6-21</span><span aria-hidden="true" class="postTags fa fa-tags">&nbsp;今天是第一天开通自己的博客</span><br><br></div><section id="articleDiv"><p>我叫司文彬，是一名多愁善感的程序猿，同事们都叫我司基猫，大概是由于我喜欢柯基并且还养了一只猫的缘故吧。50多公斤的小身板，却经常负荷许多忧虑和烦恼，又多半是自找的。我不善于向自己敬爱的人表述敬与爱，却善于向所憎恶的人表达憎与恶，然而胆子并不大。我常常否定自己，否定自己既痛苦又快乐，我就生活在这痛苦与快乐的交织网里，总也冲不出去。</p>
+</section></div><script src="/js/jquery.min.js"></script><script src="/js/highlight.min.js"></script><script src="/js/start.js"></script></body></html>
