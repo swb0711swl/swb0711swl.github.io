@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[初来乍到Hexo]]></title>
-    <url>%2F2017%2F06%2F21%2F%E5%88%9D%E6%9D%A5%E4%B9%8D%E5%88%B0%2F</url>
-    <content type="text"><![CDATA[我叫司文彬，是一名多愁善感的程序猿，同事们都叫我司基猫，大概是由于我喜欢柯基并且还养了一只猫的缘故吧。50多公斤的小身板，却经常负荷许多忧虑和烦恼，又多半是自找的。我不善于向自己敬爱的人表述敬与爱，却善于向所憎恶的人表达憎与恶，然而胆子并不大。我常常否定自己，否定自己既痛苦又快乐，我就生活在这痛苦与快乐的交织网里，总也冲不出去。]]></content>
-      <categories>
-        <category>自我介绍</category>
-      </categories>
-      <tags>
-        <tag>自我介绍</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F06%2F21%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[初来乍到Hexo]]></title>
+      <url>/2017/06/21/%E5%88%9D%E6%9D%A5%E4%B9%8D%E5%88%B0/</url>
+      <content type="html"><![CDATA[<p>我叫司文彬，是一名多愁善感的程序猿，同事们都叫我司基猫，大概是由于我喜欢柯基并且还养了一只猫的缘故吧。50多公斤的小身板，却经常负荷许多忧虑和烦恼，又多半是自找的。<a id="more"></a>我不善于向自己敬爱的人表述敬与爱，却善于向所憎恶的人表达憎与恶，然而胆子并不大。我常常否定自己，否定自己既痛苦又快乐，我就生活在这痛苦与快乐的交织网里，总也冲不出去。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 自我介绍 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 自我介绍 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
 </search>
