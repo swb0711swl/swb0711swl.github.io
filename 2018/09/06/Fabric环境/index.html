@@ -1,0 +1,1234 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Fabric环境搭建,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="童年，我们总以为什么都不懂；少年，我们总以为自己什么都懂；青年，我们又以为什么都不懂；中年，我们又以为什么都懂；老年，其实我们什么都不懂。此人生五境界论，揭示了人生的秘密：我们在生活面前，永远都是无知的孩子。   ubuntu参考区块链之Hyperledger（超级账本）Fabric v1.0 的环境搭建（超详细教程） 本人是mac OS 系统，参考Mac下Hyperledger Fabric(">
+<meta name="keywords" content="Fabric环境搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac下搭建hyperledger Fabric环境">
+<meta property="og:url" content="http://yoursite.com/2018/09/06/Fabric环境/index.html">
+<meta property="og:site_name" content="wildPointer">
+<meta property="og:description" content="童年，我们总以为什么都不懂；少年，我们总以为自己什么都懂；青年，我们又以为什么都不懂；中年，我们又以为什么都懂；老年，其实我们什么都不懂。此人生五境界论，揭示了人生的秘密：我们在生活面前，永远都是无知的孩子。   ubuntu参考区块链之Hyperledger（超级账本）Fabric v1.0 的环境搭建（超详细教程） 本人是mac OS 系统，参考Mac下Hyperledger Fabric(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-28T05:33:27.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac下搭建hyperledger Fabric环境">
+<meta name="twitter:description" content="童年，我们总以为什么都不懂；少年，我们总以为自己什么都懂；青年，我们又以为什么都不懂；中年，我们又以为什么都懂；老年，其实我们什么都不懂。此人生五境界论，揭示了人生的秘密：我们在生活面前，永远都是无知的孩子。   ubuntu参考区块链之Hyperledger（超级账本）Fabric v1.0 的环境搭建（超详细教程） 本人是mac OS 系统，参考Mac下Hyperledger Fabric(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键词进行搜索","hits_empty":"找不到关于“ ${query} ”的文章","hits_stats":"共找到 ${hits} 篇文章，花了 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/06/Fabric环境/">
+
+
+
+
+
+  <title>Mac下搭建hyperledger Fabric环境 | wildPointer</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wildPointer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+
+<script src="https://cdn.bootcss.com/aplayer/1.6.0/APlayer.min.js"></script>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/06/Fabric环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="万恶的小彬彬">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wildPointer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mac下搭建hyperledger Fabric环境</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T15:42:48+08:00">
+                2018-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/区块链/" itemprop="url" rel="index">
+                    <span itemprop="name">区块链</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>童年，我们总以为什么都不懂；少年，我们总以为自己什么都懂；青年，我们又以为什么都不懂；中年，我们又以为什么都懂；老年，其实我们什么都不懂。此人生五境界论，揭示了人生的秘密：我们在生活面前，永远都是无知的孩子。</p>
+</blockquote>
+<hr>
+<p>ubuntu参考<a href="https://blog.csdn.net/so5418418/article/details/78355868/" target="_blank" rel="noopener">区块链之Hyperledger（超级账本）Fabric v1.0 的环境搭建（超详细教程）</a></p>
+<p>本人是mac OS 系统，参考<a href="https://www.jianshu.com/p/e108cf655c0f" target="_blank" rel="noopener">Mac下Hyperledger Fabric(超级账本)环境搭建</a>,这篇文章作者已经写的很详细了，但是在操作过程中我还是遇到了困难，搞了很久，最后在朋友的帮助下得以解决，所以在此记录下来，以方便遇到同样问题的朋友参考。</p>
+<a id="more"></a>
+<h3 id="1、前提条件"><a href="#1、前提条件" class="headerlink" title="1、前提条件"></a>1、前提条件</h3><h5 id="1-1-安装-Go"><a href="#1-1-安装-Go" class="headerlink" title="1.1 安装 Go"></a>1.1 安装 Go</h5><p>Mac 可以直接通过 <code>homebrew</code> 安装 go 环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install go</span><br></pre></td></tr></table></figure>
+<p>或者通过官网下载安装包<a href="https://golang.org/dl/" target="_blank" rel="noopener">传送门</a></p>
+<p>安装完成后检测是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ go version</span><br><span class="line">go version go1.11 darwin/amd64</span><br></pre></td></tr></table></figure>
+<h5 id="1-2-配置环境变量"><a href="#1-2-配置环境变量" class="headerlink" title="1.2 配置环境变量"></a>1.2 配置环境变量</h5><p><strong>a:</strong> 新建一个go的文件夹，路径放在$HOME下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd $HOME	//进入 $HOME 目录下 </span><br><span class="line">$ mkdir go	//新建 go 文件夹</span><br></pre></td></tr></table></figure>
+<p><strong>b:</strong> 配置环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd $HOME			//进入 $HOME 目录下 </span><br><span class="line">$ vi .bash_profile	//编辑 .bash_profile 文件</span><br></pre></td></tr></table></figure>
+<p>输入 <code>i</code> ,然后在文件末尾加上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#GOPATH</span><br><span class="line">export GOPATH=$HOME/go</span><br><span class="line"></span><br><span class="line">#GOBIN</span><br><span class="line">export GOBIN=$GOPATH/bin</span><br><span class="line">export PATH=$PATH:$GOBIN</span><br></pre></td></tr></table></figure>
+<p>按下 <code>esc</code> 键，输入 <code>:wq</code> 保存后退出，执行 <code>source</code> 命令，使之生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source .bash_profile</span><br></pre></td></tr></table></figure>
+<p><strong>c:</strong> 通过 <code>go env</code> 检查：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ go env</span><br><span class="line"></span><br><span class="line">#输出结果</span><br><span class="line">GOARCH=&quot;amd64&quot;</span><br><span class="line">GOBIN=&quot;/Users/wasai/go/bin&quot;</span><br><span class="line">GOCACHE=&quot;/Users/wasai/Library/Caches/go-build&quot;</span><br><span class="line">GOEXE=&quot;&quot;</span><br><span class="line">GOFLAGS=&quot;&quot;</span><br><span class="line">GOHOSTARCH=&quot;amd64&quot;</span><br><span class="line">GOHOSTOS=&quot;darwin&quot;</span><br><span class="line">GOOS=&quot;darwin&quot;</span><br><span class="line">GOPATH=&quot;/Users/wasai/go&quot;</span><br><span class="line">.	</span><br><span class="line">.此处截取一部分，省略很多</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-安装Docker并更新镜像源"><a href="#1-3-安装Docker并更新镜像源" class="headerlink" title="1.3 安装Docker并更新镜像源"></a>1.3 安装Docker并更新镜像源</h5><p><strong>a</strong> 安装Docker和docker-compose</p>
+<p>在官网下载<a href="https://store.docker.com/editions/community/docker-ce-desktop-mac" target="_blank" rel="noopener">Docker CE for Mac</a>（需要注册dockerId才能下载），完成后安装。</p>
+<p>安装后检查docker和docker-compose是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker --version</span><br><span class="line">Docker version 18.06.1-ce, build e68fc7a</span><br><span class="line">$ docker-compose --version</span><br><span class="line">docker-compose version 1.22.0, build f46880f</span><br></pre></td></tr></table></figure>
+<p><strong>b</strong> 更新镜像源</p>
+<p>打开刚刚安装的Docker软件，点击导航栏上的Docker图标-&gt;Preference-&gt;Daemon,在<code>Registry mirrors</code>中加入<code>https://aic2v8yz.mirror.aliyuncs.com</code></p>
+<p>ps：这里使用上述参考文章作者的加速器,如果你自己有也可以用自己的加速器</p>
+<p>完成之后，最后确保docker的状态是<code>Docker is running</code>并且在运行Hyperledger的时候，Docker的状态也是<code>Docker is running</code></p>
+<h3 id="2、下载Hyperledger-Fabric项目源码"><a href="#2、下载Hyperledger-Fabric项目源码" class="headerlink" title="2、下载Hyperledger Fabric项目源码"></a>2、下载Hyperledger Fabric项目源码</h3><p>为 fabric 创建项目路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cd $GOPATH									</span><br><span class="line">$ mkdir -p src/github.com/hyperledger</span><br><span class="line">$ cd src/github.com/hyperledger</span><br><span class="line">$ pwd		</span><br><span class="line">/Users/wasai/go/src/github.com/hyperledger</span><br></pre></td></tr></table></figure>
+<p>从git上拉取<a href="https://github.com/hyperledger/fabric" target="_blank" rel="noopener">Hyperledger Fabric</a>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:hyperledger/fabric.git</span><br><span class="line">$ ls</span><br><span class="line">fabric</span><br></pre></td></tr></table></figure>
+<p>进入项目文件夹，查看tag：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ cd fabric</span><br><span class="line">$ git tag</span><br><span class="line">baseimage-v0.0.11</span><br><span class="line">v0.6.0-preview</span><br><span class="line">v0.6.1-preview</span><br><span class="line">v1.0.0</span><br><span class="line">v1.0.0-alpha</span><br><span class="line">v1.0.0-alpha2</span><br><span class="line">v1.0.0-beta</span><br><span class="line">v1.0.0-rc1</span><br><span class="line">v1.0.1</span><br><span class="line">v1.0.2</span><br><span class="line">v1.0.3</span><br><span class="line">v1.0.4</span><br><span class="line">v1.0.5</span><br><span class="line">v1.0.6</span><br><span class="line">v1.1.0</span><br><span class="line">v1.1.0-alpha</span><br><span class="line">v1.1.0-preview</span><br><span class="line">v1.1.0-rc1</span><br><span class="line">v1.1.1</span><br><span class="line">v1.2.0</span><br><span class="line">v1.2.0-rc1</span><br></pre></td></tr></table></figure>
+<p>选择使用v1.0.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout v1.0.0</span><br><span class="line">$ git branch</span><br><span class="line">* (HEAD detached at v1.0.0)</span><br><span class="line">  release-1.2</span><br></pre></td></tr></table></figure>
+<h3 id="3、启动项目"><a href="#3、启动项目" class="headerlink" title="3、启动项目"></a>3、启动项目</h3><p>进入项目文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd examples/e2e_cli</span><br></pre></td></tr></table></figure>
+<p>执行download-dockerimages.sh，程序将会通过docker拉取项目所需镜像, 为了统一版本，请指定拉取镜像的版本号:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod +x download-dockerimages.sh</span><br><span class="line">$ ./download-dockerimages.sh -c x86_64-1.0.0 -f x86_64-1.0.0</span><br></pre></td></tr></table></figure>
+<p>镜像拉取完成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">===&gt; List out hyperledger docker images</span><br><span class="line">hyperledger/fabric-tools       latest              0403fd1c72c7        14 months ago       1.32GB</span><br><span class="line">hyperledger/fabric-tools       x86_64-1.0.0        0403fd1c72c7        14 months ago       1.32GB</span><br><span class="line">hyperledger/fabric-couchdb     latest              2fbdbf3ab945        14 months ago       1.48GB</span><br><span class="line">hyperledger/fabric-couchdb     x86_64-1.0.0        2fbdbf3ab945        14 months ago       1.48GB</span><br><span class="line">hyperledger/fabric-kafka       latest              dbd3f94de4b5        14 months ago       1.3GB</span><br><span class="line">hyperledger/fabric-kafka       x86_64-1.0.0        dbd3f94de4b5        14 months ago       1.3GB</span><br><span class="line">hyperledger/fabric-zookeeper   latest              e545dbf1c6af        14 months ago       1.31GB</span><br><span class="line">hyperledger/fabric-zookeeper   x86_64-1.0.0        e545dbf1c6af        14 months ago       1.31GB</span><br><span class="line">hyperledger/fabric-orderer     latest              e317ca5638ba        14 months ago       179MB</span><br><span class="line">hyperledger/fabric-orderer     x86_64-1.0.0        e317ca5638ba        14 months ago       179MB</span><br><span class="line">hyperledger/fabric-peer        latest              6830dcd7b9b5        14 months ago       182MB</span><br><span class="line">hyperledger/fabric-peer        x86_64-1.0.0        6830dcd7b9b5        14 months ago       182MB</span><br><span class="line">hyperledger/fabric-javaenv     latest              8948126f0935        14 months ago       1.42GB</span><br><span class="line">hyperledger/fabric-javaenv     x86_64-1.0.0        8948126f0935        14 months ago       1.42GB</span><br><span class="line">hyperledger/fabric-ccenv       latest              7182c260a5ca        14 months ago       1.29GB</span><br><span class="line">hyperledger/fabric-ccenv       x86_64-1.0.0        7182c260a5ca        14 months ago       1.29GB</span><br><span class="line">hyperledger/fabric-ca          latest              a15c59ecda5b        14 months ago       238MB</span><br><span class="line">hyperledger/fabric-ca          x86_64-1.0.0        a15c59ecda5b        14 months ago       238MB</span><br><span class="line">hyperledger/fabric-baseos      x86_64-0.3.1        4b0cab202084        16 months ago       157MB</span><br></pre></td></tr></table></figure>
+<p>最后执行脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./network_setup.sh up &lt;channel-ID&gt;</span><br></pre></td></tr></table></figure>
+<p>如果没有<code>channel-ID</code>,默认为<code>mychannel</code>，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./network_setup.sh up mychannel</span><br></pre></td></tr></table></figure>
+<p>我执行完这个命令失败了，出现以下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Error: Error endorsing chaincode: rpc error: code = Unknown desc = Error starting container: API error (404): &#123;&quot;message&quot;:&quot;network e2ecli_default not found&quot;&#125;</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  peer chaincode instantiate [flags]</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -C, --channelID string   The channel on which this command should be executed (default &quot;testchainid&quot;)</span><br><span class="line">  -c, --ctor string        Constructor message for the chaincode in JSON format (default &quot;&#123;&#125;&quot;)</span><br><span class="line">  -E, --escc string        The name of the endorsement system chaincode to be used for this chaincode</span><br><span class="line">  -l, --lang string        Language the chaincode is written in (default &quot;golang&quot;)</span><br><span class="line">  -n, --name string        Name of the chaincode</span><br><span class="line">  -P, --policy string      The endorsement policy associated to this chaincode</span><br><span class="line">  -v, --version string     Version of the chaincode specified in install/instantiate/upgrade commands</span><br><span class="line">  -V, --vscc string        The name of the verification system chaincode to be used for this chaincode</span><br><span class="line"></span><br><span class="line">Global Flags:</span><br><span class="line">      --cafile string              Path to file containing PEM-encoded trusted certificate(s) for the ordering endpoint</span><br><span class="line">      --logging-level string       Default logging level and overrides, see core.yaml for full syntax</span><br><span class="line">  -o, --orderer string             Ordering service endpoint</span><br><span class="line">      --test.coverprofile string   Done (default &quot;coverage.cov&quot;)</span><br><span class="line">      --tls                        Use TLS when communicating with the orderer endpoint</span><br><span class="line"></span><br><span class="line">!!!!!!!!!!!!!!! Chaincode instantiation on PEER2 on channel &apos;mychannel&apos; failed !!!!!!!!!!!!!!!!</span><br><span class="line">================== ERROR !!! FAILED to execute End-2-End Scenario ==================</span><br></pre></td></tr></table></figure>
+<p><code>ctrl+c</code>退出</p>
+<p><strong>解决办法：</strong> 找到本地文件夹进入项目：<code>/fabric/examples/e2e_cli/base/peer-base.yaml</code>，打开 <code>peer-base.yaml</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># Copyright IBM Corp. All Rights Reserved.</span><br><span class="line">#</span><br><span class="line"># SPDX-License-Identifier: Apache-2.0</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">version: &apos;2&apos;</span><br><span class="line">services:</span><br><span class="line">  peer-base:</span><br><span class="line">    image: hyperledger/fabric-peer</span><br><span class="line">    environment:</span><br><span class="line">      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock</span><br><span class="line">      # the following setting starts chaincode containers on the same</span><br><span class="line">      # bridge network as the peers</span><br><span class="line">      # https://docs.docker.com/compose/networking/</span><br><span class="line">      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=e2ecli_default</span><br><span class="line">      #- CORE_LOGGING_LEVEL=ERROR</span><br><span class="line">      - CORE_LOGGING_LEVEL=DEBUG</span><br><span class="line">      - CORE_PEER_TLS_ENABLED=true</span><br><span class="line">      - CORE_PEER_GOSSIP_USELEADERELECTION=true</span><br><span class="line">      - CORE_PEER_GOSSIP_ORGLEADER=false</span><br><span class="line">      - CORE_PEER_PROFILE_ENABLED=true</span><br><span class="line">      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt</span><br><span class="line">      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key</span><br><span class="line">      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt</span><br><span class="line">    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer</span><br><span class="line">    command: peer node start</span><br></pre></td></tr></table></figure>
+<p>其中将<code>- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=e2ecli_default</code>改为<code>- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=e2e_cli_default</code></p>
+<p>然后执行命令（如果不执行这个，会出现新的问题）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 在e2e_cli目录下</span><br><span class="line">$ ./network_setup.sh down</span><br></pre></td></tr></table></figure>
+<p>重新启动Docker（如果不重启，会出现新的问题）</p>
+<p>再重新执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./network_setup.sh up mychannel</span><br></pre></td></tr></table></figure>
+<p>成功后输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">===================== Query on PEER3 on channel &apos;mychannel&apos; is successful =====================</span><br><span class="line"></span><br><span class="line">===================== All GOOD, End-2-End execution completed =====================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> _____   _   _   ____            _____   ____    _____</span><br><span class="line">| ____| | \ | | |  _ \          | ____| |___ \  | ____|</span><br><span class="line">|  _|   |  \| | | | | |  _____  |  _|     __) | |  _|</span><br><span class="line">| |___  | |\  | | |_| | |_____| | |___   / __/  | |___</span><br><span class="line">|_____| |_| \_| |____/          |_____| |_____| |_____|</span><br></pre></td></tr></table></figure>
+<p><code>ctrl+c</code>退出</p>
+<h3 id="4、测试Fabric网络"><a href="#4、测试Fabric网络" class="headerlink" title="4、测试Fabric网络"></a>4、测试Fabric网络</h3><p>这里有官方提供的小例子，在官方例子中，channel名字是mychannel，链码的名字是mycc。<br>首先进入CLI，然后重新打开一个命令行窗口，输入： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker exec -it cli bash</span><br></pre></td></tr></table></figure>
+<p>然后运行以下命令可以查询a账户的余额： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n mycc -c &apos;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;a&quot;]&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@e484bcb8e6da:/opt/gopath/src/github.com/hyperledger/fabric/peer# peer chaincode query -C mychannel -n mycc -c &apos;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;a&quot;]&#125;&apos;</span><br><span class="line">2018-09-06 10:11:25.945 UTC [msp] GetLocalMSP -&gt; DEBU 001 Returning existing local MSP</span><br><span class="line">2018-09-06 10:11:25.945 UTC [msp] GetDefaultSigningIdentity -&gt; DEBU 002 Obtaining default signing identity</span><br><span class="line">2018-09-06 10:11:25.945 UTC [chaincodeCmd] checkChaincodeCmdParams -&gt; INFO 003 Using default escc</span><br><span class="line">2018-09-06 10:11:25.945 UTC [chaincodeCmd] checkChaincodeCmdParams -&gt; INFO 004 Using default vscc</span><br><span class="line">2018-09-06 10:11:25.945 UTC [msp/identity] Sign -&gt; DEBU 005 Sign: plaintext: 0A95070A6708031A0C08CDFAC3DC0510...6D7963631A0A0A0571756572790A0161 </span><br><span class="line">2018-09-06 10:11:25.946 UTC [msp/identity] Sign -&gt; DEBU 006 Sign: digest: A7714812CFA5315FB0649B429267ED7DDE45CD1C082A55D2C03A09F3ACF2DE72 </span><br><span class="line">Query Result: 90</span><br><span class="line">2018-09-06 10:11:25.963 UTC [main] main -&gt; INFO 007 Exiting.....</span><br><span class="line">root@e484bcb8e6da:/opt/gopath/src/github.com/hyperledger/fabric/peer#</span><br></pre></td></tr></table></figure>
+<p><code>Query Result: 90</code> 结果余额90</p>
+<p>下面可以进行转账<code>invoke</code>操作,a转给b 50：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n mycc -c &apos;&#123;&quot;Args&quot;:[&quot;invoke&quot;,&quot;a&quot;,&quot;b&quot;,&quot;50&quot;]&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>现在转账完毕， 我们试一试再查询一下a账户的余额，重复之前的查询指令，结果为： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@e484bcb8e6da:/opt/gopath/src/github.com/hyperledger/fabric/peer# peer chaincode query -C mychannel -n mycc -c &apos;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;a&quot;]&#125;&apos;</span><br><span class="line">2018-09-06 10:14:42.158 UTC [msp] GetLocalMSP -&gt; DEBU 001 Returning existing local MSP</span><br><span class="line">2018-09-06 10:14:42.159 UTC [msp] GetDefaultSigningIdentity -&gt; DEBU 002 Obtaining default signing identity</span><br><span class="line">2018-09-06 10:14:42.159 UTC [chaincodeCmd] checkChaincodeCmdParams -&gt; INFO 003 Using default escc</span><br><span class="line">2018-09-06 10:14:42.160 UTC [chaincodeCmd] checkChaincodeCmdParams -&gt; INFO 004 Using default vscc</span><br><span class="line">2018-09-06 10:14:42.162 UTC [msp/identity] Sign -&gt; DEBU 005 Sign: plaintext: 0A94070A6608031A0B0892FCC3DC0510...6D7963631A0A0A0571756572790A0161 </span><br><span class="line">2018-09-06 10:14:42.162 UTC [msp/identity] Sign -&gt; DEBU 006 Sign: digest: C6521250C0ACBF25D2B862D61ADF60EEC64015A1362CB091E9C3D5DAC8C2AA43 </span><br><span class="line">Query Result: 40</span><br><span class="line">2018-09-06 10:14:42.183 UTC [main] main -&gt; INFO 007 Exiting.....</span><br><span class="line">root@e484bcb8e6da:/opt/gopath/src/github.com/hyperledger/fabric/peer#</span><br></pre></td></tr></table></figure>
+<p><code>Query Result: 40</code> 结果剩余40了，正确。</p>
+<p>最后，我们需要关闭Fabric，这里先使用exit命令退出cli容器。然后执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./network_setup.sh down</span><br></pre></td></tr></table></figure>
+<p>搭建并且测试结束！</p>
+<hr>
+<p><em>到此结束，一把辛酸泪，好记性不如烂笔头。</em></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Fabric环境搭建/" rel="tag"># Fabric环境搭建</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/24/X轴放大时X轴下方的数据重复显示/" rel="next" title="Charts X轴放大时X轴下方的数据重复显示">
+                <i class="fa fa-chevron-left"></i> Charts X轴放大时X轴下方的数据重复显示
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/14/fastlane-蒲公英自动化打包/" rel="prev" title="fastlane+蒲公英自动化打包">
+                fastlane+蒲公英自动化打包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="万恶的小彬彬">
+          <p class="site-author-name" itemprop="name">万恶的小彬彬</p>
+           
+              <p class="site-description motion-element" itemprop="description">iOS</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/swb0711swl" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/3d98e91e545e" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、前提条件"><span class="nav-number">1.</span> <span class="nav-text">1、前提条件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-安装-Go"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 安装 Go</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-配置环境变量"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2 配置环境变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-安装Docker并更新镜像源"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.3 安装Docker并更新镜像源</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#2、下载Hyperledger-Fabric项目源码"><span class="nav-number">2.</span> <span class="nav-text">2、下载Hyperledger Fabric项目源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、启动项目"><span class="nav-number">3.</span> <span class="nav-text">3、启动项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、测试Fabric网络"><span class="nav-number">4.</span> <span class="nav-text">4、测试Fabric网络</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+    <div class="aplayer" data-id="167802" data-server="netease" data-type="song" data-mode="single" data-autoplay="true"></div>
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">万恶的小彬彬</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<script src="https://api.i-meto.com/music/aplayer.min.js"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
