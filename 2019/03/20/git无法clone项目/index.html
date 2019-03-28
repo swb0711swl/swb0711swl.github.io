@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="github,">
 
 
 
@@ -93,17 +93,18 @@
 
 
 
-<meta name="description" content="iOS">
+<meta name="description" content="情绪成熟的人，不会在爱中堕落，而是在爱中成长，于是爱也在他心中长成。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;——卡尔·曼宁格">
+<meta name="keywords" content="github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift基础知识">
-<meta property="og:url" content="http://yoursite.com/2018/09/25/swift基础知识/index.html">
+<meta property="og:title" content="git clone提示(fatal:Could not read from remote repository)">
+<meta property="og:url" content="http://yoursite.com/2019/03/20/git无法clone项目/index.html">
 <meta property="og:site_name" content="wildPointer">
-<meta property="og:description" content="iOS">
+<meta property="og:description" content="情绪成熟的人，不会在爱中堕落，而是在爱中成长，于是爱也在他心中长成。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;——卡尔·曼宁格">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-28T05:33:27.970Z">
+<meta property="og:updated_time" content="2019-03-28T08:33:40.686Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swift基础知识">
-<meta name="twitter:description" content="iOS">
+<meta name="twitter:title" content="git clone提示(fatal:Could not read from remote repository)">
+<meta name="twitter:description" content="情绪成熟的人，不会在爱中堕落，而是在爱中成长，于是爱也在他心中长成。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;——卡尔·曼宁格">
 
 
 
@@ -131,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/25/swift基础知识/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/20/git无法clone项目/">
 
 
 
 
 
-  <title>swift基础知识 | wildPointer</title>
+  <title>git clone提示(fatal:Could not read from remote repository) | wildPointer</title>
   
 
 
@@ -310,7 +311,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/swift基础知识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/git无法clone项目/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="万恶的小彬彬">
@@ -327,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">swift基础知识</h1>
+          <h1 class="post-title" itemprop="name headline">git clone提示(fatal:Could not read from remote repository)</h1>
         
 
         <div class="post-meta">
@@ -339,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T17:53:32+08:00">
-                2018-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T13:44:00+08:00">
+                2019-03-20
               </time>
             
 
@@ -349,6 +350,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/github/" itemprop="url" rel="index">
+                    <span itemprop="name">github</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -376,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  0
+                  483
                 </span>
               
 
@@ -398,7 +421,29 @@
       
 
       
-        
+        <blockquote>
+<p>情绪成熟的人，不会在爱中堕落，而是在爱中成长，于是爱也在他心中长成。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——卡尔·曼宁格</p>
+</blockquote>
+<a id="more"></a>
+<p>有没有经历过这种绝望，开发过程中电脑突然凉了，经过好多天的检测，尝试维修，最终确定电脑确实凉了。我就经历过。于是换新电脑，安装git客户端，重新clone代码，发现一直报错，clone不下来，好气啊有木有，但还是要保持微笑，我的解决办法如下：</p>
+<p>1、如果你能访问远程仓库地址</p>
+<p>执行命令 <code>$ ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code></p>
+<p>然后一直回车就行了，成功后会在你的主目录下生成一个.ssh文件夹，不过这个是隐藏文件，进入主目录，使用<code>command+shift+.</code>快捷键打开隐藏文件，进入.ssh文件夹会看到id_rsa私钥和id_rsa.pub公钥，最后打开id_rsa.pub公钥文件复制里面的内容，访问远程仓库地址，进入setting选项，添加SSH公钥，然后重新clone代码即可。</p>
+<p>2、如果你只有一个git仓库clone地址，无法访问远程仓库地址</p>
+<p>执行命令 <code>$ ssh-keygen</code></p>
+<p>Enter file in which to save the key (“当前所在路径”): “给文件起个名字”</p>
+<p>这里随便起一个名字，这样问题就出来了，你起的这个名字没有和ssh内设定的名字保持一致，所以使用命令</p>
+<p><code>$ ssh -T git@github.com</code></p>
+<p>会报出Permission denied (publickey).这个错误。</p>
+<p>这时候可以通过给文件起名字的时候用<code>id_rsa</code>这个.ssh内设名字解决。</p>
+<p>也可以通过执行命令</p>
+<p><code>$ ssh-add ~/.ssh/你的名字</code></p>
+<p>将自己的名字加入到.ssh中之后，再执行命令</p>
+<p><code>$ ssh -T git@github.com</code></p>
+<p>解决。然后clone代码，你最期待的画面出现了。</p>
+<hr>
+<p><em>到此结束，一把辛酸泪，好记性不如烂笔头。</em></p>
+
       
     </div>
 
@@ -425,6 +470,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/github/" rel="tag"># github</a>
+          
+        </div>
+      
 
       
       
@@ -434,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/14/fastlane-蒲公英自动化打包/" rel="next" title="fastlane+蒲公英自动化打包">
-                <i class="fa fa-chevron-left"></i> fastlane+蒲公英自动化打包
+              <a href="/2018/09/25/swift基础知识/" rel="next" title="swift基础知识">
+                <i class="fa fa-chevron-left"></i> swift基础知识
               </a>
             
           </div>
@@ -444,8 +495,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/20/git无法clone项目/" rel="prev" title="git clone提示(fatal:Could not read from remote repository)">
-                git clone提示(fatal:Could not read from remote repository) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/28/vue/" rel="prev" title="vue">
+                vue <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

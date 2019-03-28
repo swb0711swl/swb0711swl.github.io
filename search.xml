@@ -12,6 +12,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[git clone提示(fatal:Could not read from remote repository)]]></title>
+    <url>%2F2019%2F03%2F20%2Fgit%E6%97%A0%E6%B3%95clone%E9%A1%B9%E7%9B%AE%2F</url>
+    <content type="text"><![CDATA[情绪成熟的人，不会在爱中堕落，而是在爱中成长，于是爱也在他心中长成。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——卡尔·曼宁格 有没有经历过这种绝望，开发过程中电脑突然凉了，经过好多天的检测，尝试维修，最终确定电脑确实凉了。我就经历过。于是换新电脑，安装git客户端，重新clone代码，发现一直报错，clone不下来，好气啊有木有，但还是要保持微笑，我的解决办法如下： 1、如果你能访问远程仓库地址 执行命令 $ ssh-keygen -t rsa -C &quot;你的邮箱地址&quot; 然后一直回车就行了，成功后会在你的主目录下生成一个.ssh文件夹，不过这个是隐藏文件，进入主目录，使用command+shift+.快捷键打开隐藏文件，进入.ssh文件夹会看到id_rsa私钥和id_rsa.pub公钥，最后打开id_rsa.pub公钥文件复制里面的内容，访问远程仓库地址，进入setting选项，添加SSH公钥，然后重新clone代码即可。 2、如果你只有一个git仓库clone地址，无法访问远程仓库地址 执行命令 $ ssh-keygen Enter file in which to save the key (“当前所在路径”): “给文件起个名字” 这里随便起一个名字，这样问题就出来了，你起的这个名字没有和ssh内设定的名字保持一致，所以使用命令 $ ssh -T git@github.com 会报出Permission denied (publickey).这个错误。 这时候可以通过给文件起名字的时候用id_rsa这个.ssh内设名字解决。 也可以通过执行命令 $ ssh-add ~/.ssh/你的名字 将自己的名字加入到.ssh中之后，再执行命令 $ ssh -T git@github.com 解决。然后clone代码，你最期待的画面出现了。 到此结束，一把辛酸泪，好记性不如烂笔头。]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[swift基础知识]]></title>
     <url>%2F2018%2F09%2F25%2Fswift%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%2F</url>
     <content type="text"></content>
